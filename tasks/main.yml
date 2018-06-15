@@ -1,0 +1,29 @@
+---
+
+- name: Check for atatus_api_key
+  fail:
+    msg: "atatus_api_key has not been defined"
+  when: atatus_api_key|default(False) == False
+
+- name: Download Atatus PHP Agent.
+  get_url:
+    url:  "{{ atatus_php_tar_ball }}"
+    dest: "{{ workspace }}/{{ atatus_php_agent_file }}.tar.gz"
+
+- name: Expand Archive.
+  unarchive:
+    src: "{{ workspace }}/{{ atatus_php_agent_file }}.tar.gz"
+    dest: "{{ workspace }}"
+
+- name: Install Agent
+  command: >
+    sudo bash install.sh
+    chdir={{ workspace }}/{{ atatus_php_agent_file }}
+
+# Change API Key in atatus.ini
+- lineinfile:
+    path: "{{ atatus_ini_file }}"
+    regexp: '^atatus.api_key ='
+    line: 'atatus.api_key = "{{ atatus_api_key }}"'
+  notify:
+    - Restart PHP Server

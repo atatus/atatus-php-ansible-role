@@ -1,0 +1,21 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Fizer
+  description: Atatus PHP Agent Ansible Role
+  min_ansible_version: 2.4
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Musl
+    versions:
+    - all
+  galaxy_tags:
+    - apm
+    - php
+    - monitoring

@@ -1,0 +1,12 @@
+---
+workspace: /root
+
+# Must update following values
+atatus_api_key: "YOUR_API_KEY"
+atatus_ini_file: /etc/php/7.0/conf.d/atatus.ini
+php_service_name: php7-fpm     # apache2
+linux_distribution: "debian"   # redhat, musl
+atatus_php_version: "1.3.0"
+
+atatus_php_agent_file: "atatus-php-{{ atatus_php_version }}-x64-{{ linux_distribution }}"
+atatus_php_tar_ball: "https://s3.amazonaws.com/atatus-artifacts/atatus-php/downloads/{{ atatus_php_agent_file }}.tar.gz"

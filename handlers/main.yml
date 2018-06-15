@@ -1,0 +1,5 @@
+---
+
+- name: Restart PHP Server
+  service: name={{ php_service_name }} state=restarted
+  ignore_errors: yes
