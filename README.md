@@ -28,4 +28,4 @@ None.
 
     - hosts: servers
       roles:
-        - { role: atatus-php-ansible }
+        - { role: atatus-php-ansible-role }
